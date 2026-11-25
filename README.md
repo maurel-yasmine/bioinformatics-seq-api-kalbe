@@ -72,6 +72,28 @@ bioinformatics-seq-api-kalbe/
    ```bash
    python -m pytest -v
    ```
+   Example terminal output (`13 passed`):
+   ```text
+   ========================= test session starts =========================
+   platform win32 -- Python 3.14.0, pytest-9.2.0, pluggy-1.7.0
+   collected 13 items
+
+   tests/test_api.py::test_align_patient_01_identical PASSED        [  7%]
+   tests/test_api.py::test_align_patient_02_snvs PASSED             [ 15%]
+   tests/test_api.py::test_align_patient_03_deletions PASSED        [ 23%]
+   tests/test_api.py::test_align_patient_04_ambiguous_n PASSED      [ 30%]
+   tests/test_api.py::test_align_patient_05_insertions PASSED       [ 38%]
+   tests/test_api.py::test_leading_insertion_position_zero PASSED   [ 46%]
+   tests/test_api.py::test_translate_patient_02_default_frame PASSED [ 53%]
+   tests/test_api.py::test_translate_reading_frames_and_stop_codons PASSED [ 61%]
+   tests/test_api.py::test_translate_ambiguous_codons_and_short_sequence PASSED [ 69%]
+   tests/test_api.py::test_fasta_formatting_normalization PASSED    [ 76%]
+   tests/test_api.py::test_fasta_validation_errors PASSED           [ 84%]
+   tests/test_api.py::test_translate_invalid_frame PASSED           [ 92%]
+   tests/test_api.py::test_analyze_patient_02_and_03_variant_effects PASSED [100%]
+
+   ==================== 13 passed, 1 warning in 0.95s ====================
+   ```
 
 ## Running with Docker
 
