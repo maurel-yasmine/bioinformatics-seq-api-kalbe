@@ -217,3 +217,20 @@ def test_translate_invalid_frame():
         data={"frame": "4"},
     )
     assert res.status_code == 422
+
+def test_analyze_patient_02_and_03_variant_effects():
+    with open(DATA_DIR / "patient_02.fasta", "rb") as f:
+        res2 = client.post(
+            "/api/analyze", files={"file": ("patient_02.fasta", f, "text/plain")}
+        )
+    assert res2.status_code == 200
+    effects2 = [v["effect"] for v in res2.json()["annotated_variants"]]
+    assert effects2 == ["synonymous", "missense", "nonsense"]
+
+    with open(DATA_DIR / "patient_03.fasta", "rb") as f:
+        res3 = client.post(
+            "/api/analyze", files={"file": ("patient_03.fasta", f, "text/plain")}
+        )
+    assert res3.status_code == 200
+    effects3 = [v["effect"] for v in res3.json()["annotated_variants"]]
+    assert effects3 == ["in-frame deletion", "frameshift"]
